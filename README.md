@@ -65,7 +65,7 @@ with open('gu.html',encoding = "utf-8") as f:
     html = f.read()
 print(html)
 
-#guguji.print_html(html)
+guguji.print_html(html)
 ```
 
 
