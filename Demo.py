@@ -1,14 +1,23 @@
 from guguji_sdk import gusdk
 
+#
 guguji=gusdk(
-    ak='Your APIKey',
-    memobirdID='Your memobirdID'
+    ak='Your accesskey', #access key
+    memobirdID='Your memobirdID' #咕咕机的设备编号(双击设备吐出来的设备编号) From double click memobird
     )
 
+#打印文本 print_Text
 guguji.print_text_paper('我的咕咕机')
-guguji.print_photo_paper('p.png')
-resp=guguji.get_status(44182537)
-res=guguji.print_url('http://open.memobird.cn/Home/testview')
+
+#打印图片 print_photo
+guguji.print_photo_paper('p.png') #png  or  jpg
+
+#获取打印状态 get_status
+guguji.get_status(printcontentID) #44182537
+
+#打印网页 print_url
+url='http://open.memobird.cn/Home/testview'
+guguji.print_url(url)
 
 html="""
 <!DOCTYPE html>
@@ -28,4 +37,6 @@ html="""
 </body>
 </html>
 """
+
+#打印html标记语言 print_html
 guguji.print_html(html)
