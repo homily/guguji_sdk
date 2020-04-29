@@ -2,9 +2,7 @@ import httpx
 import time
 import base64
 
-
-
-class gugu_sdk:
+class gusdk:
 
     def __init__(self,ak,memobirdID):
         self.ak=ak
@@ -23,7 +21,6 @@ class gugu_sdk:
         self.timestamp=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         self.params_sys = {'ak': self.ak,'timestamp':self.timestamp}
         self.params={**params, **self.params_sys}
-        pprint.pp(self.params)
         return self._request('POST', path=url, params=params)
     
     def _request(self, method: str, path: str, **kwargs):
@@ -57,7 +54,7 @@ class gugu_sdk:
         str_encrypt=text
         base64_encrypt=self._base64str(text)
         printcontent=(f"T:{base64_encrypt}")
-        userID=guguji.get_ak()['showapi_userid']
+        userID=self.get_ak()['showapi_userid']
         params = {
               'printcontent':printcontent,
               'memobirdID':self.memobirdID,
@@ -69,7 +66,7 @@ class gugu_sdk:
         url = f'{self.host}/home/printpaper'
         base64photo=self.get_signalbase64pic(photo)['result']
         printcontent=(f'P:{base64photo}')
-        userID=guguji.get_ak()['showapi_userid']
+        userID=self.get_ak()['showapi_userid']
         params = {
               'printcontent':printcontent,
               'memobirdID':self.memobirdID,
@@ -99,7 +96,7 @@ class gugu_sdk:
     def print_url(self,PrintUrl):
         url = f'{self.host}/home/printpaperFromUrl'
         self.printUrl=PrintUrl
-        userID=guguji.get_ak()['showapi_userid']
+        userID=self.get_ak()['showapi_userid']
         params = {
               'printUrl':self.printUrl,
               'memobirdID':self.memobirdID,
@@ -110,11 +107,14 @@ class gugu_sdk:
     def print_html(self,PrintHtml):
         url = f'{self.host}/home/printpaperFromHtml'
         self.printHtml=self._base64str(PrintHtml)
-        print(self.printHtml)
-        userID=guguji.get_ak()['showapi_userid']
+        userID=self.get_ak()['showapi_userid']
         params = {
               'printHtml':self.printHtml,
               'memobirdID':self.memobirdID,
               'userID':userID
               }
         return (self._post(url,params))
+
+
+
+
