@@ -79,8 +79,6 @@ html="""
 </body>
 </html>
 """
-url='http://open.memobird.cn/Home/testview'
-
 
 
 guguji.print_html(html)
