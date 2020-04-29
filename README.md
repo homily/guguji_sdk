@@ -90,5 +90,6 @@ guguji.print_html(html)
 
 # 获取打印状态  get_status
 ```
-resp=guguji.get_status(44182537)
+guguji.get_status(printcontentID) #44182537
 ```
+printcontentID 从前面各类打印方法返回
